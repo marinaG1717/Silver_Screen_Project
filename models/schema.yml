@@ -12,7 +12,7 @@ sources:
       - name: transactions_l3
 
 models:
-  - name: your_model_name  # replace with real model name, or add more
+  - name: silver_screen  # replace with real model name, or add more
     description: "Brief description of what this model does"
     columns:
       - name: column_1
