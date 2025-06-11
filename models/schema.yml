@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: silver_screen
+    database: SILVER_SCREEN
+    schema: PUBLIC
+    tables:
+      - name: invoices
+      - name: movie_catalogue
+      - name: transactions_l1
+      - name: transactions_l2
+      - name: transactions_l3
+
+models:
+  - name: your_model_name  # replace with real model name, or add more
+    description: "Brief description of what this model does"
+    columns:
+      - name: column_1
+        description: "Description of column_1"
+      - name: column_2
+        description: "Description of column_2"
