@@ -5,3 +5,4 @@ DISTINCT movie_id,
   studio
 FROM {{ source('silver_screen', 'movie_catalogue') }}
 -- for staging
+ 
