@@ -6,7 +6,7 @@ It transforms raw invoice and transaction data into clean, report-ready tables f
 ---
 
 ## 📁 Project Structure
-
+<pre>
 ├── models/
 │ ├── staging/
 │ │ ├── stg_invoices.sql
@@ -22,6 +22,7 @@ It transforms raw invoice and transaction data into clean, report-ready tables f
 │
 ├── schema.yml
 └── README.md
+</pre>
 
 ## 📊 Data Models
 
