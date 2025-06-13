@@ -2,7 +2,7 @@ name: 'silver_screen'
 version: '1.0.0'
 config-version: 2
 
-profile: 'default'  
+profile: 'default'  # This must match the name in your ~/.dbt/profiles.yml
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -18,5 +18,4 @@ clean-targets:
 
 models:
   silver_screen:
-         # saves models to SILVER_SCREEN.dbt_silver_screen
-    +materialized: view   # default; can override per model with table/incremental
+    +materialized: view  # Default materialization for models in this folder

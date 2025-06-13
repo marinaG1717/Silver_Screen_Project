@@ -1,29 +1,35 @@
 version: 2
 
+
 sources:
   - name: silver_screen
+    description: >
+      Source layer containing raw data from the Silver Screen movie rental and sales platform.
+      Includes invoices, movie catalogue, and transactional records.
     database: SILVER_SCREEN
     schema: PUBLIC
     tables:
       - name: invoices
+        description: "Raw invoice data with rental costs by movie and location."
       - name: movie_catalogue
+        description: "Original movie metadata with titles, genres, release dates, and studios."
       - name: transactions_l1
+        description: "First-level transactional data (e.g., online ticket sales)."
       - name: transactions_l2
+        description: "Second-level transactional data (e.g., POS terminal sales)."
       - name: transactions_l3
+        description: "Third-level transactional data (e.g., kiosk or mobile app sales)."
+
 
 models:
-  - name: silver_screen  
-    description: "Brief description of what this model does"
-    columns:
-      - name: column_1
-        description: "Description of column_1"
-      - name: column_2
-        description: "Description of column_2"
+
   - name: movie_catalogue_cleaned
-    description: "Cleaned movie catalogue with missing values handled"
+    description: >
+      Cleaned version of the movie catalogue with missing values handled and standardized formats.
     columns:
       - name: movie_id
         description: "Unique identifier for the movie"
+        tests: [not_null]
       - name: movie_title
         description: "Title of the movie"
       - name: director
@@ -50,62 +56,43 @@ models:
     columns:
       - name: movie_id
         description: "Unique identifier of the movie"
-        tests:
-          - not_null
-
+        tests: [not_null]
       - name: location
-        description: "Location code (NJ_001, NJ_002, NJ_003)"
-
+        description: "Location code (e.g., NJ_001, NJ_002)"
       - name: month
         description: "Truncated month (first day of the month)"
-        tests:
-          - not_null
-
+        tests: [not_null]
       - name: total_tickets_sold
         description: "Total number of tickets sold per movie, location and month"
-
       - name: total_revenue
         description: "Total revenue from ticket sales per movie, location and month"
+
   - name: final_rental_movie_info
     description: >
-      Monthly summary table for each movie at each location in 2024, including rental cost, tickets sold, and total revenue.
+      Final monthly summary model that combines movie metadata, rental cost, and 
+      aggregated ticket performance by location. Used for financial and performance reporting.
     columns:
       - name: movie_id
-        description: Unique identifier of the movie
-        tests:
-          - not_null
-
+        description: "Unique identifier of the movie"
+        tests: [not_null]
       - name: movie_title
-        description: Title of the movie
-
+        description: "Title of the movie"
       - name: genre
-        description: Genre of the movie
-
+        description: "Genre of the movie"
       - name: studio
-        description: Studio that produced the movie
-
+        description: "Studio that produced the movie"
       - name: month
-        description: Month of the transaction (truncated to first day of month)
-        tests:
-          - not_null
-
+        description: "Month of the transaction (truncated to first day of month)"
+        tests: [not_null]
       - name: location
-        description: Location identifier
-        tests:
-          - not_null
-
+        description: "Location identifier"
+        tests: [not_null]
       - name: rental_cost
-        description: Monthly rental cost of the movie in that location
-        tests:
-          - not_null
-
+        description: "Monthly rental cost of the movie in that location"
+        tests: [not_null]
       - name: total_tickets_sold
-        description: Total number of tickets sold for the movie in that location and month
-        tests:
-          - not_null
-
+        description: "Total number of tickets sold for the movie in that location and month"
+        tests: [not_null]
       - name: total_revenue
-        description: Total revenue generated from ticket sales
-        tests:
-          - not_null
-
+        description: "Total revenue generated from ticket sales"
+        tests: [not_null]
