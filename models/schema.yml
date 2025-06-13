@@ -43,3 +43,69 @@ models:
       - name: studio
         description: "Producing studio"
 
+  - name: union_transactions
+    description: >
+      Aggregated monthly ticket sales and revenue per movie and location 
+      for the year 2024, unified from three different transaction sources.
+    columns:
+      - name: movie_id
+        description: "Unique identifier of the movie"
+        tests:
+          - not_null
+
+      - name: location
+        description: "Location code (NJ_001, NJ_002, NJ_003)"
+
+      - name: month
+        description: "Truncated month (first day of the month)"
+        tests:
+          - not_null
+
+      - name: total_tickets_sold
+        description: "Total number of tickets sold per movie, location and month"
+
+      - name: total_revenue
+        description: "Total revenue from ticket sales per movie, location and month"
+  - name: final_rental_movie_info
+    description: >
+      Monthly summary table for each movie at each location in 2024, including rental cost, tickets sold, and total revenue.
+    columns:
+      - name: movie_id
+        description: Unique identifier of the movie
+        tests:
+          - not_null
+
+      - name: movie_title
+        description: Title of the movie
+
+      - name: genre
+        description: Genre of the movie
+
+      - name: studio
+        description: Studio that produced the movie
+
+      - name: month
+        description: Month of the transaction (truncated to first day of month)
+        tests:
+          - not_null
+
+      - name: location
+        description: Location identifier
+        tests:
+          - not_null
+
+      - name: rental_cost
+        description: Monthly rental cost of the movie in that location
+        tests:
+          - not_null
+
+      - name: total_tickets_sold
+        description: Total number of tickets sold for the movie in that location and month
+        tests:
+          - not_null
+
+      - name: total_revenue
+        description: Total revenue generated from ticket sales
+        tests:
+          - not_null
+
