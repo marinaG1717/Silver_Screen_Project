@@ -1,0 +1,15 @@
+with source_invoices as (
+    select * 
+    from {{ source('silver_screen', 'invoices') }}
+),
+
+cleaned_invoices as (
+    select
+        movie_id,
+        LOCATION_ID,
+        date_trunc('month', MONTH) as month,
+        TOTAL_INVOICE_SUM as rental_cost  
+    from source_invoices
+)
+
+select * from cleaned_invoices
