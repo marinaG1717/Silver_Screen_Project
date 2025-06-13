@@ -42,7 +42,10 @@ SELECT
     t.total_revenue
 FROM agg_transactions t
 LEFT JOIN rental r
-    ON t.movie_id = r.movie_id 
+    ON t.movie_id = r.movie_id
+    AND t.location = r.location
+    AND t.month = r.month
+
  
 LEFT JOIN movie_info m
     ON t.movie_id = m.movie_id
