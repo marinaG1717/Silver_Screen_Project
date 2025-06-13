@@ -9,6 +9,6 @@ SELECT
   budget,
   country,
   rating,
-  release_date,
+  DATE_TRUNC('month', release_date) AS month,
   studio
 FROM {{ source('silver_screen', 'movie_catalogue') }}
