@@ -17,15 +17,14 @@ select
     m.studio,
     t.month,
     t.location,
-    i.rental_cost,
+    COALESCE(i.rental_cost, 0) AS rental_cost,
     t.total_tickets_sold,
     t.total_revenue
 from transactions t
-inner join movies m
-    on t.movie_id = m.movie_id
-inner join invoices i
+left join invoices i
     on t.movie_id = i.movie_id
     and t.location = i.location
     and t.month = i.month
-
+left join movies m
+    on t.movie_id = m.movie_id
 

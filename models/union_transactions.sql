@@ -8,7 +8,7 @@ WITH unioned AS (
         TICKET_AMOUNT AS ticket_quantity,
         PRICE AS price
     FROM {{ source('silver_screen', 'transactions_l1') }}
-    WHERE EXTRACT(YEAR FROM month) = 2024
+    
     
 
     UNION ALL
@@ -20,7 +20,7 @@ WITH unioned AS (
         TICKET_AMOUNT AS ticket_quantity,
         TICKET_PRICE AS price
     FROM {{ source('silver_screen', 'transactions_l2') }}
-    WHERE EXTRACT(YEAR FROM month) = 2024
+    
 
     UNION ALL
 
@@ -31,7 +31,7 @@ WITH unioned AS (
         AMOUNT AS ticket_quantity,
         PRICE AS price
     FROM {{ source('silver_screen', 'transactions_l3') }}
-    WHERE PRODUCT_TYPE = 'ticket' and  EXTRACT(YEAR FROM month) = 2024
+    WHERE PRODUCT_TYPE = 'ticket' 
 )
 
 SELECT

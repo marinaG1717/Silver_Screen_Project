@@ -8,8 +8,9 @@ cleaned_invoices as (
         movie_id,
         LOCATION_ID as location,
         date_trunc('month', MONTH) as month,
-        TOTAL_INVOICE_SUM as rental_cost  
+        SUM(TOTAL_INVOICE_SUM) as rental_cost  
     from source_invoices
+    group by 1,2,3
 )
 
 select * from cleaned_invoices
