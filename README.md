@@ -11,14 +11,14 @@ It transforms raw invoice and transaction data into clean, report-ready tables f
 │ ├── staging/
 │ │ ├── stg_invoices.sql
 │ │ └── stg_movie_catalogue_cleaned.sql
-│ ├── marts/
-│ │ ├── final_rental_movie_info.sql
-│ ├── intermediate/
-│ │ └── union_transactions.sql
+│ 
+│ ├── final_rental_movie_info.sql
+
+│ ├── union_transactions.sql
 │
 ├── tests/
 │ └── test_final_rental_movie_info_duplicates.sql
-└── test_final_rental_movie_info_unique_combination.sql
+  └── test_final_rental_movie_info_unique_combination.sql
 │
 ├── schema.yml
 └── README.md
