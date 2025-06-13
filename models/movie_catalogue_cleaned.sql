@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 SELECT
-  movie_id,
+  DISTINCT movie_id,
   movie_title,
   director,
   COALESCE(genre, 'Unknown') AS genre,
