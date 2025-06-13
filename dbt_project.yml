@@ -2,7 +2,7 @@ name: 'silver_screen'
 version: '1.0.0'
 config-version: 2
 
-profile: 'default'  # This must match the name in your ~/.dbt/profiles.yml
+profile: 'default'  
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
