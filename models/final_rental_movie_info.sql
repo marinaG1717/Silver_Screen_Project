@@ -8,7 +8,7 @@ WITH agg_transactions AS (
         SUM(total_tickets_sold) AS total_tickets_sold,
         SUM(total_revenue) AS total_revenue
     FROM {{ ref('union_transactions') }}
-    WHERE EXTRACT(YEAR FROM month) = 2024
+    
     GROUP BY movie_id, location, DATE_TRUNC('month', month)
 ),
 
@@ -41,9 +41,9 @@ SELECT
     t.total_tickets_sold,
     t.total_revenue
 FROM agg_transactions t
-LEFT JOIN rental r
+INNER JOIN rental r
     ON t.movie_id = r.movie_id
     AND t.location = r.location
     AND t.month = r.month
-LEFT JOIN movie_info m
+INNER JOIN movie_info m
     ON t.movie_id = m.movie_id
